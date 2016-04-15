@@ -32,3 +32,16 @@ original_refine = original_refine %>% mutate(category = ifelse(code == 'p', 'Sma
 # 4- Add full address for geocoding
 ######################################
 original_refine = unite(original_refine, 'fullAddress', address, city, country, sep = ",")
+
+######################################
+# 5- Create dummy variables for company and product category
+######################################
+original_refine = original_refine %>% mutate(company_philips = ifelse(company == 'philips', 1, 0))
+original_refine = original_refine %>% mutate(company_akzo = ifelse(company == 'akzo', 1, 0))
+original_refine = original_refine %>% mutate(company_van_houtens = ifelse(company == 'van houten', 1, 0))
+original_refine = original_refine %>% mutate(company_unilever = ifelse(company == 'unilever', 1, 0))
+
+original_refine = original_refine %>% mutate(product_smartphone = ifelse(category == 'Smartphone', 1, 0))
+original_refine = original_refine %>% mutate(product_tv = ifelse(category == 'TV', 1, 0))
+original_refine = original_refine %>% mutate(product_laptop = ifelse(category == 'Laptop', 1, 0))
+original_refine = original_refine %>% mutate(product_tablet = ifelse(category == 'Tablet', 1, 0))
