@@ -20,3 +20,11 @@ original_refine$company = gsub('(^[un].*)', x = original_refine$company, replace
 # 2- Separate product code and number
 ######################################
 original_refine = separate(original_refine, Product.code...number, c('code', 'number'), sep = '-')
+
+######################################
+# 3- Add product categories
+######################################
+original_refine = original_refine %>% mutate(category = ifelse(code == 'p', 'Smartphone',
+                                                        ifelse(code == 'x', 'Laptop',
+                                                        ifelse(code == 'v', 'TV',
+                                                        'Tablet'))))
