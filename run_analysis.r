@@ -15,3 +15,8 @@ original_refine$company = gsub('(^[ak].*)', x = original_refine$company, replace
 
 ##Correct 'unilever'
 original_refine$company = gsub('(^[un].*)', x = original_refine$company, replacement = 'unilever')
+
+######################################
+# 2- Separate product code and number
+######################################
+original_refine = separate(original_refine, Product.code...number, c('code', 'number'), sep = '-')
