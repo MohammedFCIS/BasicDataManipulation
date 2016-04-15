@@ -28,3 +28,7 @@ original_refine = original_refine %>% mutate(category = ifelse(code == 'p', 'Sma
                                                         ifelse(code == 'x', 'Laptop',
                                                         ifelse(code == 'v', 'TV',
                                                         'Tablet'))))
+######################################
+# 4- Add full address for geocoding
+######################################
+original_refine = unite(original_refine, 'fullAddress', address, city, country, sep = ",")
